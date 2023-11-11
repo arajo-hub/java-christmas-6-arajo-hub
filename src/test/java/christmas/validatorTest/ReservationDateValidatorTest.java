@@ -2,17 +2,19 @@ package christmas.validatorTest;
 
 import christmas.validator.ReservationDateValidator;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class ReservationDateValidatorTest {
 
     private ReservationDateValidator reservationDateValidator = new ReservationDateValidator();
 
-    @DisplayName("예약 날짜가 1일 경우 정상")
     @Test
-    void reservationDateOneTest() {
+    void 예약날짜_1_정상() {
         int reservationDate = 1;
         assertTrue(reservationDateValidator.isValid(reservationDate));
     }
@@ -22,32 +24,28 @@ public class ReservationDateValidatorTest {
      * 2월 등 마지막 날짜가 31이 아닌 경우 테스트 코드에 사용된 예약 날짜를 수정해야 함.
      * @See ReservationDateValidator.isValid()
      */
-    @DisplayName("예약 날짜가 31일 경우 정상")
     @Test
-    void reservationDateThirtyOneTest() {
+    void 예약날짜_31_정상() {
         int reservationDate = 31;
         assertTrue(reservationDateValidator.isValid(reservationDate));
     }
 
     /* 이하 예외 케이스 */
 
-    @DisplayName("예약 날짜가 0일 경우 예외 발생")
     @Test
-    void reservationDateZeroTest() {
+    void 예약날짜_0_실패() {
         int reservationDate = 0;
         assertFalse(reservationDateValidator.isValid(reservationDate));
     }
 
-    @DisplayName("예약 날짜가 음수일 경우 예외 발생")
     @Test
-    void reservationDateNegativeTest() {
+    void 예약날짜_음수_실패() {
         int reservationDate = -1;
         assertFalse(reservationDateValidator.isValid(reservationDate));
     }
 
-    @DisplayName("예약 날짜가 존재하지 않는 일자일 경우 예외 발생")
     @Test
-    void reservationDateNotExistTest() {
+    void 존재하지_않는_예약날짜_실패() {
         int reservationDate = 500;
         assertFalse(reservationDateValidator.isValid(reservationDate));
     }
