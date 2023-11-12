@@ -4,7 +4,6 @@ import christmas.EventPlannerDetail;
 import christmas.Order;
 import christmas.enums.Menu;
 import christmas.event.Event;
-import christmas.event.gift.Gift;
 
 import java.time.LocalDate;
 import java.time.Year;
@@ -25,7 +24,7 @@ public class ChampagneEvent extends Event<Gift> {
     }
 
     @Override
-    boolean isAvailable(Order order) {
+    public boolean isAvailable(Order order) {
         if (!isInEventPeriod(order.getReservationDate())) {
             return false;
         }
@@ -33,7 +32,7 @@ public class ChampagneEvent extends Event<Gift> {
     }
 
     @Override
-    void apply(Order order) {
+    public void apply(Order order) {
         if (isAvailable(order)) {
             compensation.add(new Gift(Menu.CHAMPAGNE, 1));
         }

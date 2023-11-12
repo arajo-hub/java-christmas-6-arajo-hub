@@ -17,8 +17,9 @@ public class SalePolicy {
      * 할인 정책 기본 설정
      */
     public SalePolicy() {
-        this.salePolicies = new ArrayList<>();
-        salePolicies.add(new ChristmasDDayEvent());
+        this.salePolicies = List.of(new ChristmasDDayEvent(),
+                new WeekdayEvent(),
+                new SpecialDayEvent());
     }
 
     public SalePolicy(List<Event<Sale>> salePolicies) {

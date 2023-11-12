@@ -15,9 +15,9 @@ public abstract class Event<T> {
     protected LocalDate startDate;
     protected LocalDate endDate;
 
-    abstract boolean isAvailable(Order order);
+    public abstract boolean isAvailable(Order order);
 
-    abstract void apply(Order order);
+    public abstract void apply(Order order);
 
     public String getName() {
         return name;
