@@ -62,6 +62,10 @@ public class EventPlanner {
 
         outputView.printSalesAndGifts(saleEvents, giftEvents);
 
+        Benefit benefit = new Benefit(saleEvents, giftEvents);
+
+        outputView.printTotalBenefitPrice(benefit.getTotalBenefit());
+
     }
 
     /**
