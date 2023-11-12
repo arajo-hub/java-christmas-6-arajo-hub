@@ -4,6 +4,7 @@ import christmas.EventPlannerDetail;
 import christmas.Order;
 import christmas.OrderMenu;
 import christmas.event.Event;
+import christmas.event.badge.Badge;
 import christmas.event.gift.Gift;
 import christmas.event.sale.Sale;
 
@@ -136,6 +137,22 @@ public class OutputView {
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.println(changeToMoneyFormat(totalBenefitPrice));
         System.out.println();
+    }
+
+    public void printBadges(List<Event<Badge>> badgeEvents) {
+        System.out.println(String.format("<%d월 이벤트 배지>", EventPlannerDetail.EVENT_MONTH));
+
+        StringBuilder sb = new StringBuilder();
+        for (Event<Badge> badgeEvent : badgeEvents) {
+            for (Badge badge : badgeEvent.getCompensation()) {
+                sb.append(badge.getName());
+            }
+        }
+        if (sb.isEmpty()) {
+            System.out.println(NONE);
+            return;
+        }
+        System.out.println(sb);
     }
 
 }

@@ -1,6 +1,8 @@
 package christmas;
 
 import christmas.event.*;
+import christmas.event.badge.Badge;
+import christmas.event.badge.BadgePolicy;
 import christmas.event.gift.Gift;
 import christmas.event.gift.GiftPolicy;
 import christmas.event.sale.Sale;
@@ -30,6 +32,8 @@ public class EventPlanner {
 
     private SalePolicy salePolicy;
 
+    private BadgePolicy badgePolicy;
+
     /**
      * 증정 정책, 할인 정책 기본으로 설정하고 생성
      * @param inputView 입력뷰
@@ -40,6 +44,7 @@ public class EventPlanner {
         this.outputView = outputView;
         this.giftPolicy = new GiftPolicy();
         this.salePolicy = new SalePolicy();
+        this.badgePolicy = new BadgePolicy();
     }
 
     public void start() {
@@ -73,6 +78,12 @@ public class EventPlanner {
         order.setBenefit(benefit);
 
         outputView.printEstimatedPaymentAmountAfterSale(order.getPaymentAmountAfterSale());
+
+        List<Event<Badge>> badgeEvents = badgePolicy.applyAndGetAppliedGiftPolicies(order);
+
+        benefit.setBadges(badgeEvents);
+
+        outputView.printBadges(badgeEvents);
 
     }
 

@@ -1,6 +1,7 @@
 package christmas;
 
 import christmas.event.Event;
+import christmas.event.badge.Badge;
 import christmas.event.gift.Gift;
 import christmas.event.sale.Sale;
 
@@ -13,6 +14,7 @@ public class Benefit {
 
     private List<Event<Sale>> sales;
     private List<Event<Gift>> gifts;
+    private List<Event<Badge>> badges;
 
     public Benefit(List<Event<Sale>> sales, List<Event<Gift>> gifts) {
         this.sales = sales;
@@ -36,6 +38,14 @@ public class Benefit {
             totalBenefit += sale.getCompensation().stream().mapToInt(Sale::getDiscount).sum();
         }
         return totalBenefit;
+    }
+
+    public List<Event<Badge>> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<Event<Badge>> badges) {
+        this.badges = badges;
     }
 
 }
