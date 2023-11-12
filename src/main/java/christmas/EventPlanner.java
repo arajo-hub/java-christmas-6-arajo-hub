@@ -35,6 +35,8 @@ public class EventPlanner {
         List<OrderMenu> orderMenus = getOrderMenus();
 
         outputView.printEventHeader(reservationDate);
+
+        outputView.printOrderMenus(orderMenus);
     }
 
     /**
