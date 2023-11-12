@@ -7,6 +7,8 @@ import christmas.view.ErrorOutputView;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +28,13 @@ public class EventPlanner {
 
     public void start() {
         outputView.greeting();
+
         int date = getReservationDate();
+        LocalDate reservationDate = LocalDate.of(Year.now().getValue(), EventDetail.EVENT_MONTH, date);
+
         List<OrderMenu> orderMenus = getOrderMenus();
-        orderMenus.stream().forEach(orderMenu -> System.out.println(orderMenu));
+
+        outputView.printEventHeader(reservationDate);
     }
 
     /**

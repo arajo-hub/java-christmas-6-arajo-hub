@@ -15,13 +15,13 @@ public class Order {
     private LocalDate reservationDate;
     private int paymentAmount;
 
-    public Order(List<OrderMenu> orderMenus, LocalDate reservationDate, int paymentAmount) {
+    public Order(LocalDate reservationDate, List<OrderMenu> orderMenus) {
         if (!OrderValidator.isValid(orderMenus)) {
             throw new IllegalArgumentException(OrderErrorMessage.INVALID_ORDER);
         }
         this.orderMenus = orderMenus;
         this.reservationDate = reservationDate;
-        this.paymentAmount = paymentAmount;
+        this.paymentAmount = orderMenus.stream().mapToInt(orderMenu -> orderMenu.getTotalPrice()).sum();
     }
 
 }
