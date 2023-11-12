@@ -1,8 +1,6 @@
 package christmas;
 
-import christmas.event.Event;
-import christmas.event.Gift;
-import christmas.event.GiftPolicy;
+import christmas.event.*;
 import christmas.message.OrderErrorMessage;
 import christmas.message.ReservationDateErrorMessage;
 import christmas.validator.ReservationDateValidator;
@@ -26,6 +24,8 @@ public class EventPlanner {
 
     private GiftPolicy giftPolicy;
 
+    private SalePolicy salePolicy;
+
     /**
      * 증정 정책, 할인 정책 기본으로 설정하고 생성
      * @param inputView 입력뷰
@@ -35,6 +35,7 @@ public class EventPlanner {
         this.inputView = inputView;
         this.outputView = outputView;
         this.giftPolicy = new GiftPolicy();
+        this.salePolicy = new SalePolicy();
     }
 
     public void start() {
@@ -56,6 +57,10 @@ public class EventPlanner {
         List<Event<Gift>> giftEvents = giftPolicy.applyAndGetAppliedGiftPolicies(order);
 
         outputView.printGifts(giftEvents);
+
+        List<Event<Sale>> saleEvents = salePolicy.applyAndGetAppliedSalePolicies(order);
+
+        outputView.printSalesAndGifts(saleEvents, giftEvents);
 
     }
 

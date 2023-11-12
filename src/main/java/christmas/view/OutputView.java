@@ -5,6 +5,7 @@ import christmas.Order;
 import christmas.OrderMenu;
 import christmas.event.Event;
 import christmas.event.Gift;
+import christmas.event.Sale;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -75,6 +76,51 @@ public class OutputView {
         giftEvents.forEach(giftEvent -> {
             for (Gift gift : giftEvent.getCompensation()) {
                 result.add(String.format("%s %d개", gift.getMenu().getName(), gift.getCount()));
+            }
+        });
+        return result;
+    }
+
+    public void printSalesAndGifts(List<Event<Sale>> saleEvents, List<Event<Gift>> giftEvents) {
+        System.out.println("<혜택 내역>");
+        StringBuilder sb = new StringBuilder();
+        for (String each : changeToSalesForPrintSalesAndGifts(saleEvents)) {
+            sb.append(each).append(System.lineSeparator());
+        }
+        for (String each : changeToGiftsForPrintSalesAndGifts(giftEvents)) {
+            sb.append(each).append(System.lineSeparator());
+        }
+        if (sb.isEmpty()) {
+            sb.append(NONE);
+        }
+        System.out.println(sb);
+    }
+
+    /**
+     * 혜택 내역에 출력하기 위해 할인 정보를 포맷화한다.
+     * @param saleEvents 할인 이벤트 리스트
+     * @return 포맷화된 할인 정보 리스트
+     */
+    private List<String> changeToSalesForPrintSalesAndGifts(List<Event<Sale>> saleEvents) {
+        List<String> result = new ArrayList<>();
+        saleEvents.forEach(saleEvent -> {
+            for (Sale sale : saleEvent.getCompensation()) {
+                result.add(String.format("%s: -%s", saleEvent.getName(), changeToMoneyFormat(sale.getDiscount())));
+            }
+        });
+        return result;
+    }
+
+    /**
+     * 혜택 내역에 출력하기 위해 증정 정보를 포맷화한다.
+     * @param giftEvents 증정 이벤트 리스트
+     * @return 포맷화된 증정 정보 리스트
+     */
+    private List<String> changeToGiftsForPrintSalesAndGifts(List<Event<Gift>> giftEvents) {
+        List<String> result = new ArrayList<>();
+        giftEvents.forEach(giftEvent -> {
+            for (Gift gift : giftEvent.getCompensation()) {
+                result.add(String.format("%s: -%s", giftEvent.getName(), changeToMoneyFormat(gift.getMenu().getPrice())));
             }
         });
         return result;
