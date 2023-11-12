@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class OutputView {
 
+    public static final String NONE = "없음";
+
     public String changeToMoneyFormat(int money) {
         return String.format("%,d원", money);
     }
@@ -67,7 +69,7 @@ public class OutputView {
     private List<String> changeToGiftsForPrintGifts(List<Event<Gift>> giftEvents) {
         List<String> result = new ArrayList<>();
         if (giftEvents.isEmpty()) {
-            result.add("없음");
+            result.add(NONE);
             return result;
         }
         giftEvents.forEach(giftEvent -> {
