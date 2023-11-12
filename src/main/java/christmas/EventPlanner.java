@@ -66,6 +66,10 @@ public class EventPlanner {
 
         outputView.printTotalBenefitPrice(benefit.getTotalBenefit());
 
+        order.setBenefit(benefit);
+
+        outputView.printEstimatedPaymentAmountAfterSale(order.getPaymentAmountAfterSale());
+
     }
 
     /**

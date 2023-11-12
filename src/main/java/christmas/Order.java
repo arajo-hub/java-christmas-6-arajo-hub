@@ -14,6 +14,7 @@ public class Order {
     private List<OrderMenu> orderMenus;
     private LocalDate reservationDate;
     private int paymentAmount;
+    private Benefit benefit;
 
     public Order(LocalDate reservationDate, List<OrderMenu> orderMenus) {
         if (!OrderValidator.isValid(orderMenus)) {
@@ -32,7 +33,18 @@ public class Order {
         return reservationDate;
     }
 
-    public int getPaymentAmount() {
+    public void setBenefit(Benefit benefit) {
+        this.benefit = benefit;
+    }
+
+    public int getPaymentAmountBeforeSale() {
         return paymentAmount;
+    }
+
+    public int getPaymentAmountAfterSale() {
+        if (this.benefit == null) {
+            return paymentAmount;
+        }
+        return paymentAmount - this.benefit.getTotalBenefit();
     }
 }

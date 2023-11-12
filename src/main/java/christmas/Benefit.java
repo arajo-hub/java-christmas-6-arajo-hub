@@ -24,9 +24,6 @@ public class Benefit {
         for (Event<Sale> sale : sales) {
             totalBenefit += sale.getCompensation().stream().mapToInt(Sale::getDiscount).sum();
         }
-        for (Event<Gift> gift : gifts) {
-            totalBenefit += gift.getCompensation().stream().mapToInt(g -> g.getMenu().getPrice() * g.getCount()).sum();
-        }
         return totalBenefit;
     }
 

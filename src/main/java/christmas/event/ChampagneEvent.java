@@ -29,7 +29,7 @@ public class ChampagneEvent extends Event<Gift> {
         if (!isInEventPeriod(order.getReservationDate())) {
             return false;
         }
-        return order.getPaymentAmount() >= EVENT_AMOUNT_THRESHOLD;
+        return order.getPaymentAmountBeforeSale() >= EVENT_AMOUNT_THRESHOLD;
     }
 
     @Override

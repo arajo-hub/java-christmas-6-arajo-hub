@@ -52,7 +52,7 @@ public class OutputView {
 
     public void printPaymentAmountBeforeSale(Order order) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(changeToMoneyFormat(order.getPaymentAmount()));
+        System.out.println(changeToMoneyFormat(order.getPaymentAmountBeforeSale()));
         System.out.println();
     }
 
@@ -129,6 +129,13 @@ public class OutputView {
     public void printTotalBenefitPrice(int totalBenefitPrice) {
         System.out.println("<총혜택 금액>");
         System.out.println(String.format("-%s", changeToMoneyFormat(totalBenefitPrice)));
+        System.out.println();
+    }
+
+    public void printEstimatedPaymentAmountAfterSale(int totalBenefitPrice) {
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println(changeToMoneyFormat(totalBenefitPrice));
+        System.out.println();
     }
 
 }
