@@ -1,7 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.EventDetail;
+import christmas.EventPlannerDetail;
 import christmas.message.ReservationDateErrorMessage;
 
 /**
@@ -10,7 +10,7 @@ import christmas.message.ReservationDateErrorMessage;
 public class InputView {
 
     public int readDate() throws IllegalArgumentException {
-        System.out.println(String.format("%d월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)", EventDetail.EVENT_MONTH));
+        System.out.println(String.format("%d월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)", EventPlannerDetail.EVENT_MONTH));
         String input = Console.readLine();
         try {
             return Integer.parseInt(input);

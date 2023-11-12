@@ -18,8 +18,8 @@ public class OrderMenu {
             throw new IllegalArgumentException(OrderErrorMessage.INVALID_ORDER);
         }
 
-        String name = input.split(EventDetail.MENU_COUNT_SEPARATOR)[0];
-        int count = Integer.parseInt(input.split(EventDetail.MENU_COUNT_SEPARATOR)[1]);
+        String name = input.split(EventPlannerDetail.MENU_COUNT_SEPARATOR)[0];
+        int count = Integer.parseInt(input.split(EventPlannerDetail.MENU_COUNT_SEPARATOR)[1]);
 
         this.menu = Menu.findMenuByName(name);
         this.count = count;
@@ -46,7 +46,7 @@ public class OrderMenu {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.menu.getName());
-        sb.append(EventDetail.MENU_COUNT_SEPARATOR);
+        sb.append(EventPlannerDetail.MENU_COUNT_SEPARATOR);
         sb.append(this.count);
         return sb.toString();
     }

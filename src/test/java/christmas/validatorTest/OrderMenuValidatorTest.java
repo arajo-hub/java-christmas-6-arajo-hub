@@ -1,6 +1,6 @@
 package christmas.validatorTest;
 
-import christmas.EventDetail;
+import christmas.EventPlannerDetail;
 import christmas.enums.Menu;
 import christmas.validator.MenuValidator;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -18,7 +18,7 @@ public class OrderMenuValidatorTest {
     void 메뉴_정상() {
         StringBuilder sb = new StringBuilder();
         sb.append(Menu.TAPAS.getName());
-        sb.append(EventDetail.MENU_COUNT_SEPARATOR);
+        sb.append(EventPlannerDetail.MENU_COUNT_SEPARATOR);
         sb.append(1);
         assertTrue(menuValidator.isValid(sb.toString()));
     }
@@ -41,7 +41,7 @@ public class OrderMenuValidatorTest {
     void 개수_0_입력시_예외_발생() {
         StringBuilder sb = new StringBuilder();
         sb.append(Menu.TAPAS.getName());
-        sb.append(EventDetail.MENU_COUNT_SEPARATOR);
+        sb.append(EventPlannerDetail.MENU_COUNT_SEPARATOR);
         sb.append(0);
         assertFalse(menuValidator.isValid(sb.toString()));
     }

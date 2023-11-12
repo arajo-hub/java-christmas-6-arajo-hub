@@ -1,9 +1,9 @@
 package christmas.validator;
 
-import christmas.EventDetail;
+import christmas.EventPlannerDetail;
 import christmas.enums.Menu;
 
-import static christmas.EventDetail.MENU_COUNT_SEPARATOR;
+import static christmas.EventPlannerDetail.MENU_COUNT_SEPARATOR;
 
 /**
  * 메뉴를 검증하는 클래스
@@ -38,7 +38,7 @@ public class MenuValidator {
     }
 
     public static boolean isMenuCountInValidRange(int count) {
-        return count >= EventDetail.ORDER_MENU_MIN_COUNT;
+        return count >= EventPlannerDetail.ORDER_MENU_MIN_COUNT;
     }
 
 }

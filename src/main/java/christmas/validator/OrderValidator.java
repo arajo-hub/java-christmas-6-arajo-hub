@@ -1,8 +1,7 @@
 package christmas.validator;
 
-import christmas.EventDetail;
+import christmas.EventPlannerDetail;
 import christmas.OrderMenu;
-import christmas.enums.MenuType;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class OrderValidator {
     private static boolean isOverMenuMaxCount(List<OrderMenu> orderMenus) {
         return orderMenus.stream()
                 .mapToInt(OrderMenu::getCount)
-                .sum() > EventDetail.ORDER_MENU_TOTAL_MAX_COUNT;
+                .sum() > EventPlannerDetail.ORDER_MENU_TOTAL_MAX_COUNT;
     }
 
     private static boolean isDuplicateOrderMenu(List<OrderMenu> orderMenus) {

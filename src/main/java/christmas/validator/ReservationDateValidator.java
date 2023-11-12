@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.EventDetail;
+import christmas.EventPlannerDetail;
 
 import java.time.Year;
 import java.time.YearMonth;
@@ -12,7 +12,7 @@ public class ReservationDateValidator {
 
     public static boolean isValid(int date) {
         return date >= 1
-                && date <= YearMonth.of(Year.now().getValue(), EventDetail.EVENT_MONTH).lengthOfMonth();
+                && date <= YearMonth.of(Year.now().getValue(), EventPlannerDetail.EVENT_MONTH).lengthOfMonth();
     }
 
 }

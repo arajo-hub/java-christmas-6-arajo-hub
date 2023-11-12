@@ -30,7 +30,7 @@ public class EventPlanner {
         outputView.greeting();
 
         int date = getReservationDate();
-        LocalDate reservationDate = LocalDate.of(Year.now().getValue(), EventDetail.EVENT_MONTH, date);
+        LocalDate reservationDate = LocalDate.of(Year.now().getValue(), EventPlannerDetail.EVENT_MONTH, date);
 
         List<OrderMenu> orderMenus = getOrderMenus();
 
@@ -71,7 +71,7 @@ public class EventPlanner {
         while (true) {
             List<OrderMenu> menus = new ArrayList<>();
             String inputMenu = inputView.readMenu();
-            String[] splitInputMenu = inputMenu.split(EventDetail.MENU_SEPARATOR);
+            String[] splitInputMenu = inputMenu.split(EventPlannerDetail.MENU_SEPARATOR);
             try {
                 if (splitInputMenu.length == 0) {
                     throw new IllegalArgumentException(OrderErrorMessage.INVALID_ORDER);

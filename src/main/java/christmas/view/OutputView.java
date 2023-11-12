@@ -1,15 +1,12 @@
 package christmas.view;
 
-import christmas.EventDetail;
+import christmas.EventPlannerDetail;
 import christmas.Order;
 import christmas.OrderMenu;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Character.LINE_SEPARATOR;
-import static java.lang.System.lineSeparator;
 
 /**
  * 안내문 출력 클래스(출력 순서에 따라 메서드를 추가 or 수정)
@@ -21,7 +18,7 @@ public class OutputView {
     }
 
     public void greeting() {
-        System.out.println(String.format("안녕하세요! 우테코 식당 %d월 이벤트 플래너입니다.", EventDetail.EVENT_MONTH));
+        System.out.println(String.format("안녕하세요! 우테코 식당 %d월 이벤트 플래너입니다.", EventPlannerDetail.EVENT_MONTH));
     }
 
     public void printEventHeader(LocalDate date) {
