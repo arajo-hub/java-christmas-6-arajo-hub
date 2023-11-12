@@ -24,6 +24,17 @@ public class Benefit {
         for (Event<Sale> sale : sales) {
             totalBenefit += sale.getCompensation().stream().mapToInt(Sale::getDiscount).sum();
         }
+        for (Event<Gift> gift : gifts) {
+            totalBenefit += gift.getCompensation().stream().mapToInt(g -> g.getMenu().getPrice() * g.getCount()).sum();
+        }
+        return totalBenefit;
+    }
+
+    public int getOnlySaleBenefit() {
+        int totalBenefit = 0;
+        for (Event<Sale> sale : sales) {
+            totalBenefit += sale.getCompensation().stream().mapToInt(Sale::getDiscount).sum();
+        }
         return totalBenefit;
     }
 

@@ -49,6 +49,6 @@ public class Order {
         if (this.benefit == null) {
             return paymentAmount;
         }
-        return paymentAmount - this.benefit.getTotalBenefit();
+        return paymentAmount - this.benefit.getOnlySaleBenefit();
     }
 }
