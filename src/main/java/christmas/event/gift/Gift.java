@@ -1,4 +1,4 @@
-package christmas.event;
+package christmas.event.gift;
 
 import christmas.enums.Menu;
 

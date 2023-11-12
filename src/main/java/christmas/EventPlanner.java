@@ -1,6 +1,10 @@
 package christmas;
 
 import christmas.event.*;
+import christmas.event.gift.Gift;
+import christmas.event.gift.GiftPolicy;
+import christmas.event.sale.Sale;
+import christmas.event.sale.SalePolicy;
 import christmas.message.OrderErrorMessage;
 import christmas.message.ReservationDateErrorMessage;
 import christmas.validator.ReservationDateValidator;

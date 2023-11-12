@@ -1,7 +1,9 @@
-package christmas.event;
+package christmas.event.sale;
 
 import christmas.EventPlannerDetail;
 import christmas.Order;
+import christmas.event.Event;
+import christmas.event.sale.Sale;
 
 import java.time.LocalDate;
 import java.time.Year;

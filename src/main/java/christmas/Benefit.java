@@ -1,8 +1,8 @@
 package christmas;
 
 import christmas.event.Event;
-import christmas.event.Gift;
-import christmas.event.Sale;
+import christmas.event.gift.Gift;
+import christmas.event.sale.Sale;
 
 import java.util.List;
 

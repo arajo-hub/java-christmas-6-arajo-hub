@@ -1,6 +1,7 @@
-package christmas.event;
+package christmas.event.sale;
 
 import christmas.Order;
+import christmas.event.Event;
 
 import java.util.ArrayList;
 import java.util.List;

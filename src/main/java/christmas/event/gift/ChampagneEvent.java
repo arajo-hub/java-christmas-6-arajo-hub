@@ -1,14 +1,14 @@
-package christmas.event;
+package christmas.event.gift;
 
 import christmas.EventPlannerDetail;
 import christmas.Order;
-import christmas.OrderMenu;
 import christmas.enums.Menu;
+import christmas.event.Event;
+import christmas.event.gift.Gift;
 
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 샴페인 증정 이벤트

@@ -33,6 +33,10 @@ public class Order {
         return reservationDate;
     }
 
+    public Benefit getBenefit() {
+        return benefit;
+    }
+
     public void setBenefit(Benefit benefit) {
         this.benefit = benefit;
     }
