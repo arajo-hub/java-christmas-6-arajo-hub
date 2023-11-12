@@ -24,4 +24,15 @@ public class Order {
         this.paymentAmount = orderMenus.stream().mapToInt(orderMenu -> orderMenu.getTotalPrice()).sum();
     }
 
+    public List<OrderMenu> getOrderMenus() {
+        return orderMenus;
+    }
+
+    public LocalDate getReservationDate() {
+        return reservationDate;
+    }
+
+    public int getPaymentAmount() {
+        return paymentAmount;
+    }
 }

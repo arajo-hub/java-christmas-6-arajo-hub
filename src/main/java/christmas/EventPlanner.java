@@ -37,6 +37,12 @@ public class EventPlanner {
         outputView.printEventHeader(reservationDate);
 
         outputView.printOrderMenus(orderMenus);
+
+        Order order = new Order(reservationDate, orderMenus);
+//        List<SaleEvent> availableSales = salePolicy.getAvailableSales(order);
+
+        outputView.printPaymentAmountBeforeSale(order);
+
     }
 
     /**
