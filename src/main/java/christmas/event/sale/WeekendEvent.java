@@ -5,6 +5,7 @@ import christmas.Order;
 import christmas.enums.MenuType;
 import christmas.event.Event;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
@@ -27,7 +28,14 @@ public class WeekendEvent extends Event<Sale> {
 
     @Override
     public boolean isAvailable(Order order) {
-        return order != null && isInEventPeriod(order.getReservationDate());
+        return order != null
+                && isInEventPeriod(order.getReservationDate())
+                && isWeekend(order.getReservationDate());
+    }
+
+    private boolean isWeekend(LocalDate date) {
+        return DayOfWeek.FRIDAY.equals(date.getDayOfWeek())
+                || DayOfWeek.FRIDAY.equals(date.getDayOfWeek());
     }
 
     @Override
