@@ -26,12 +26,12 @@ public class ChristmasDDayEvent extends Event<Sale> {
 
     @Override
     public boolean isAvailable(Order order) {
-        return isInEventPeriod(order.getReservationDate());
+        return order != null && isInEventPeriod(order.getReservationDate());
     }
 
     @Override
     public void apply(Order order) {
-        if (isAvailable(order)) {
+        if (order != null && isAvailable(order)) {
             int dayGap = order.getReservationDate().getDayOfMonth() - this.startDate.getDayOfMonth();
             this.compensation.add(new Sale(BASE_DISCOUNT + dayGap * INTERVAL_DISCOUNT));
         }
