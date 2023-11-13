@@ -2,6 +2,7 @@ package christmas.validator;
 
 import christmas.EventPlannerDetail;
 import christmas.OrderMenu;
+import christmas.enums.MenuType;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class OrderValidator {
         if (isOverMenuMaxCount(orderMenus)) {
             return false;
         }
-        if (isOnlyOneMenuType(orderMenus)) {
+        if (isOnlyDrinkMenuType(orderMenus)) {
             return false;
         }
         return true;
@@ -36,10 +37,9 @@ public class OrderValidator {
                 .count() != orderMenus.size();
     }
 
-    private static boolean isOnlyOneMenuType(List<OrderMenu> orderMenus) {
-        return orderMenus.size() != 1 && orderMenus.stream()
-                .map(OrderMenu::getMenuType)
-                .distinct()
+    private static boolean isOnlyDrinkMenuType(List<OrderMenu> orderMenus) {
+        return orderMenus.stream()
+                .filter(orderMenu -> MenuType.DRINK.equals(orderMenu.getMenuType()))
                 .count() == 1;
     }
 
