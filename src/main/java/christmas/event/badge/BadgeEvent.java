@@ -22,12 +22,12 @@ public class BadgeEvent extends Event<Badge> {
 
     @Override
     public boolean isAvailable(Order order) {
-        return isInEventPeriod(order.getReservationDate());
+        return order != null && isInEventPeriod(order.getReservationDate());
     }
 
     @Override
     public void apply(Order order) {
-        if (isAvailable(order)) {
+        if (order != null && isAvailable(order)) {
             Badge badge = Badge.getBadge(order.getBenefit().getTotalBenefit());
             if (badge != null) {
                 this.compensation.add(badge);
