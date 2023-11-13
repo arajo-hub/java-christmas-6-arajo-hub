@@ -25,7 +25,7 @@ public class ChampagneEvent extends Event<Gift> {
 
     @Override
     public boolean isAvailable(Order order) {
-        if (!isInEventPeriod(order.getReservationDate())) {
+        if (order == null || !isInEventPeriod(order.getReservationDate())) {
             return false;
         }
         return order.getPaymentAmountBeforeSale() >= EVENT_AMOUNT_THRESHOLD;
@@ -33,7 +33,7 @@ public class ChampagneEvent extends Event<Gift> {
 
     @Override
     public void apply(Order order) {
-        if (isAvailable(order)) {
+        if (order != null && isAvailable(order)) {
             compensation.add(new Gift(Menu.CHAMPAGNE, 1));
         }
     }
