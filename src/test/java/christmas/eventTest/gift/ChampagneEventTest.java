@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,8 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class ChampagneEventTest {
-
-    private ChampagneEvent champagneEvent = new ChampagneEvent();
 
     @Test
     void 총주문금액_12만원_이상_샴페인_증정_성공() {
@@ -33,6 +30,7 @@ public class ChampagneEventTest {
 
         assertTrue(order.getPaymentAmountBeforeSale() >= 120_000);
 
+        ChampagneEvent champagneEvent = new ChampagneEvent();
         champagneEvent.apply(order);
 
         assertEquals(1, champagneEvent.getCompensation().size());
@@ -51,6 +49,7 @@ public class ChampagneEventTest {
 
         List<OrderMenu> orderMenus = List.of(tBoneSteak);
         Order order = new Order(reservationDate, orderMenus);
+        ChampagneEvent champagneEvent = new ChampagneEvent();
         champagneEvent.apply(order);
 
         assertEquals(0, champagneEvent.getCompensation().size());
@@ -58,6 +57,7 @@ public class ChampagneEventTest {
 
     @Test
     void 주문이_null일_때_적용_불가() {
+        ChampagneEvent champagneEvent = new ChampagneEvent();
         assertFalse(champagneEvent.isAvailable(null));
     }
 
@@ -65,6 +65,7 @@ public class ChampagneEventTest {
     void 예약일이_이벤트_기간이_아닐_때_적용_불가() {
         List<OrderMenu> orderMenus = List.of(new OrderMenu(Menu.BARBECUE_LIP.getName() + EventPlannerDetail.MENU_COUNT_SEPARATOR + 1));
         Order order = new Order(LocalDate.of(2021, 1, 31), orderMenus);
+        ChampagneEvent champagneEvent = new ChampagneEvent();
         assertFalse(champagneEvent.isAvailable(order));
     }
 

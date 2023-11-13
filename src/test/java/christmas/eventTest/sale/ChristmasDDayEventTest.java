@@ -22,8 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class ChristmasDDayEventTest {
 
-    private ChristmasDDayEvent christmasDDayEvent = new ChristmasDDayEvent();
-
     @ParameterizedTest
     @ValueSource(ints = {1, 10, 25})
     void 할인_적용_성공(int date) {
@@ -31,6 +29,7 @@ public class ChristmasDDayEventTest {
 
         List<OrderMenu> orderMenus = List.of(new OrderMenu(Menu.BARBECUE_LIP.getName() + EventPlannerDetail.MENU_COUNT_SEPARATOR + 1));
         Order order = new Order(LocalDate.of(Year.now().getValue(), Month.DECEMBER.getValue(), date), orderMenus);
+        ChristmasDDayEvent christmasDDayEvent = new ChristmasDDayEvent();
         christmasDDayEvent.apply(order);
 
         assertEquals(expectedPrice, christmasDDayEvent.getCompensation().get(0).getDiscount());
@@ -40,6 +39,7 @@ public class ChristmasDDayEventTest {
 
     @Test
     void 주문이_null일_때_적용_불가() {
+        ChristmasDDayEvent christmasDDayEvent = new ChristmasDDayEvent();
         assertFalse(christmasDDayEvent.isAvailable(null));
     }
 
@@ -47,6 +47,7 @@ public class ChristmasDDayEventTest {
     void 예약일이_이벤트_기간이_아닐_때_적용_불가() {
         List<OrderMenu> orderMenus = List.of(new OrderMenu(Menu.BARBECUE_LIP.getName() + EventPlannerDetail.MENU_COUNT_SEPARATOR + 1));
         Order order = new Order(LocalDate.of(2021, 1, 31), orderMenus);
+        ChristmasDDayEvent christmasDDayEvent = new ChristmasDDayEvent();
         assertFalse(christmasDDayEvent.isAvailable(order));
     }
 

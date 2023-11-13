@@ -24,8 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class weekendEventTest {
 
-    private WeekendEvent weekendEvent = new WeekendEvent();
-
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 4, 5, 11, 12, 18, 19}) // 1, 2는 주말
     void 할인_적용_성공(int date) {
@@ -34,7 +32,7 @@ public class weekendEventTest {
 
         int mainCount = (int) orderMenus.stream().filter(orderMenu -> orderMenu.getMenuType() == MenuType.MAIN).count();
         int expectedPrice = mainCount * 2_023;
-
+        WeekendEvent weekendEvent = new WeekendEvent();
         weekendEvent.apply(order);
 
         assertEquals(expectedPrice, weekendEvent.getCompensation().get(0).getDiscount());
@@ -44,6 +42,7 @@ public class weekendEventTest {
 
     @Test
     void 주문이_null일_때_적용_불가() {
+        WeekendEvent weekendEvent = new WeekendEvent();
         assertFalse(weekendEvent.isAvailable(null));
     }
 
@@ -51,6 +50,7 @@ public class weekendEventTest {
     void 예약일이_이벤트_기간이_아닐_때_적용_불가() {
         List<OrderMenu> orderMenus = List.of(new OrderMenu(Menu.BARBECUE_LIP.getName() + EventPlannerDetail.MENU_COUNT_SEPARATOR + 1));
         Order order = new Order(LocalDate.of(2021, 1, 31), orderMenus);
+        WeekendEvent weekendEvent = new WeekendEvent();
         assertFalse(weekendEvent.isAvailable(order));
     }
 

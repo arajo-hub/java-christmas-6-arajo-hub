@@ -23,8 +23,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class BadgeEventTest {
 
-    private BadgeEvent badgeEvent = new BadgeEvent();
-
     @ParameterizedTest
     @ValueSource(ints = {1_000, 5_000, 5_001, 10_000, 10_001, 20_000, 20_001})
     void 총혜택금액에_따라_별_증정(int totalBenefit) {
@@ -47,6 +45,7 @@ public class BadgeEventTest {
         List<OrderMenu> orderMenus = List.of(barbecueLip, tBoneSteak);
         Order order = new Order(reservationDate, orderMenus);
 
+        BadgeEvent badgeEvent = new BadgeEvent();
         assertTrue(badgeEvent.isInEventPeriod(reservationDate));
         assertTrue(badgeEvent.isAvailable(order));
     }
@@ -61,12 +60,14 @@ public class BadgeEventTest {
         List<OrderMenu> orderMenus = List.of(barbecueLip, tBoneSteak);
         Order order = new Order(reservationDate, orderMenus);
 
+        BadgeEvent badgeEvent = new BadgeEvent();
         assertFalse(badgeEvent.isInEventPeriod(reservationDate));
         assertFalse(badgeEvent.isAvailable(order));
     }
 
     @Test
     void 주문이_null일_때_적용_불가() {
+        BadgeEvent badgeEvent = new BadgeEvent();
         assertFalse(badgeEvent.isAvailable(null));
     }
 
