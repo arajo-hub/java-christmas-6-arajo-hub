@@ -24,12 +24,12 @@ public class SpecialDayEvent extends Event<Sale> {
 
     @Override
     public boolean isAvailable(Order order) {
-        return isInEventPeriod(order.getReservationDate()) && SpecialDay.isSpecialDay(order.getReservationDate());
+        return order != null && isInEventPeriod(order.getReservationDate()) && SpecialDay.isSpecialDay(order.getReservationDate());
     }
 
     @Override
     public void apply(Order order) {
-        if (isAvailable(order)) {
+        if (order != null && isAvailable(order)) {
             this.compensation.add(new Sale(BASE_DISCOUNT));
         }
     }
