@@ -1,7 +1,7 @@
 package christmas.event.badge;
 
-import christmas.EventPlannerDetail;
-import christmas.Order;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.Order;
 import christmas.event.Event;
 
 import java.time.LocalDate;

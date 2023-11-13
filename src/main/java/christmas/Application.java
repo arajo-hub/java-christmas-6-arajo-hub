@@ -1,13 +1,12 @@
 package christmas;
 
 import christmas.event.Event;
-import christmas.event.badge.Badge;
 import christmas.event.badge.BadgeEvent;
 import christmas.event.badge.BadgePolicy;
 import christmas.event.gift.ChampagneEvent;
-import christmas.event.gift.Gift;
 import christmas.event.gift.GiftPolicy;
 import christmas.event.sale.*;
+import christmas.eventplanner.EventPlanner;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 

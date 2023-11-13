@@ -1,8 +1,8 @@
 package christmas.eventTest.gift;
 
-import christmas.EventPlannerDetail;
-import christmas.Order;
-import christmas.OrderMenu;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.Order;
+import christmas.order.OrderMenu;
 import christmas.enums.Menu;
 import christmas.event.gift.ChampagneEvent;
 import org.junit.jupiter.api.DisplayNameGeneration;

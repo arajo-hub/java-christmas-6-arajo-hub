@@ -1,4 +1,4 @@
-package christmas;
+package christmas.order;
 
 import christmas.message.OrderErrorMessage;
 import christmas.validator.OrderValidator;

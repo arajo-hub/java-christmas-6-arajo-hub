@@ -1,7 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.EventPlannerDetail;
+import christmas.eventplanner.EventPlannerDetail;
 import christmas.message.ReservationDateErrorMessage;
 
 /**

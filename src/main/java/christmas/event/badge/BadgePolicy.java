@@ -1,6 +1,6 @@
 package christmas.event.badge;
 
-import christmas.Order;
+import christmas.order.Order;
 import christmas.event.Event;
 
 import java.util.ArrayList;

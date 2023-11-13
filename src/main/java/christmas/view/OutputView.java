@@ -1,8 +1,8 @@
 package christmas.view;
 
-import christmas.EventPlannerDetail;
-import christmas.Order;
-import christmas.OrderMenu;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.Order;
+import christmas.order.OrderMenu;
 import christmas.event.Event;
 import christmas.event.badge.Badge;
 import christmas.event.gift.Gift;

@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.EventPlannerDetail;
+import christmas.eventplanner.EventPlannerDetail;
 
 import java.time.Year;
 import java.time.YearMonth;

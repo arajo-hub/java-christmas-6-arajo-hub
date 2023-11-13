@@ -1,4 +1,4 @@
-package christmas;
+package christmas.eventplanner;
 
 import christmas.event.*;
 import christmas.event.badge.Badge;
@@ -9,6 +9,9 @@ import christmas.event.sale.Sale;
 import christmas.event.sale.SalePolicy;
 import christmas.message.OrderErrorMessage;
 import christmas.message.ReservationDateErrorMessage;
+import christmas.order.Benefit;
+import christmas.order.Order;
+import christmas.order.OrderMenu;
 import christmas.validator.ReservationDateValidator;
 import christmas.view.ErrorOutputView;
 import christmas.view.InputView;

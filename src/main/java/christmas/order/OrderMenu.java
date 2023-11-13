@@ -1,5 +1,6 @@
-package christmas;
+package christmas.order;
 
+import christmas.eventplanner.EventPlannerDetail;
 import christmas.enums.Menu;
 import christmas.enums.MenuType;
 import christmas.message.OrderErrorMessage;

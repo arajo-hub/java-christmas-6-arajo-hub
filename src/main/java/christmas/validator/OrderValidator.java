@@ -1,7 +1,7 @@
 package christmas.validator;
 
-import christmas.EventPlannerDetail;
-import christmas.OrderMenu;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.OrderMenu;
 import christmas.enums.MenuType;
 
 import java.util.List;

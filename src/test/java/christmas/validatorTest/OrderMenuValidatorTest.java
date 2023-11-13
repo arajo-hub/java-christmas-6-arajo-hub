@@ -1,6 +1,6 @@
 package christmas.validatorTest;
 
-import christmas.EventPlannerDetail;
+import christmas.eventplanner.EventPlannerDetail;
 import christmas.enums.Menu;
 import christmas.validator.MenuValidator;
 import org.junit.jupiter.api.DisplayNameGeneration;

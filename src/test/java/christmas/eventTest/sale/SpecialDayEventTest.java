@@ -1,20 +1,16 @@
 package christmas.eventTest.sale;
 
-import christmas.EventPlannerDetail;
-import christmas.Order;
-import christmas.OrderMenu;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.Order;
+import christmas.order.OrderMenu;
 import christmas.enums.Menu;
-import christmas.enums.MenuType;
-import christmas.event.sale.SpecialDay;
 import christmas.event.sale.SpecialDayEvent;
-import christmas.event.sale.WeekendEvent;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;

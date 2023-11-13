@@ -1,11 +1,10 @@
 package christmas.eventTest.sale;
 
-import christmas.EventPlannerDetail;
-import christmas.Order;
-import christmas.OrderMenu;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.Order;
+import christmas.order.OrderMenu;
 import christmas.enums.Menu;
 import christmas.enums.MenuType;
-import christmas.event.sale.WeekdayEvent;
 import christmas.event.sale.WeekendEvent;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

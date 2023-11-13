@@ -1,4 +1,4 @@
-package christmas;
+package christmas.eventplanner;
 
 /**
  * 이벤트 상세 정보

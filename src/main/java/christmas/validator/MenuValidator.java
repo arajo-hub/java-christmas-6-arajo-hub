@@ -1,9 +1,9 @@
 package christmas.validator;
 
-import christmas.EventPlannerDetail;
+import christmas.eventplanner.EventPlannerDetail;
 import christmas.enums.Menu;
 
-import static christmas.EventPlannerDetail.MENU_COUNT_SEPARATOR;
+import static christmas.eventplanner.EventPlannerDetail.MENU_COUNT_SEPARATOR;
 
 /**
  * 메뉴를 검증하는 클래스

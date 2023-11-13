@@ -1,6 +1,6 @@
 package christmas.event;
 
-import christmas.Order;
+import christmas.order.Order;
 
 import java.time.LocalDate;
 import java.util.List;

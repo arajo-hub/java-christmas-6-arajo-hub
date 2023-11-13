@@ -1,7 +1,7 @@
 package christmas.event.gift;
 
-import christmas.EventPlannerDetail;
-import christmas.Order;
+import christmas.eventplanner.EventPlannerDetail;
+import christmas.order.Order;
 import christmas.enums.Menu;
 import christmas.event.Event;
 
