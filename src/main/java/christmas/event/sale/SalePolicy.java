@@ -19,6 +19,7 @@ public class SalePolicy {
     public SalePolicy() {
         this.salePolicies = List.of(new ChristmasDDayEvent(),
                 new WeekdayEvent(),
+                new WeekendEvent(),
                 new SpecialDayEvent());
     }
 
