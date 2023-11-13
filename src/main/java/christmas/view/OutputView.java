@@ -23,6 +23,13 @@ public class OutputView {
         return String.format("%,d원", money);
     }
 
+    public String changeToSaleFormat(int sale) {
+        if (sale == 0) {
+            return "0원";
+        }
+        return String.format("-%,d원", sale);
+    }
+
     public void greeting() {
         System.out.println(String.format("안녕하세요! 우테코 식당 %d월 이벤트 플래너입니다.", EventPlannerDetail.EVENT_MONTH));
     }
@@ -95,6 +102,7 @@ public class OutputView {
             sb.append(NONE);
         }
         System.out.println(sb);
+        System.out.println();
     }
 
     /**
@@ -106,7 +114,7 @@ public class OutputView {
         List<String> result = new ArrayList<>();
         saleEvents.forEach(saleEvent -> {
             for (Sale sale : saleEvent.getCompensation()) {
-                result.add(String.format("%s: -%s", saleEvent.getName(), changeToMoneyFormat(sale.getDiscount())));
+                result.add(String.format("%s: %s", saleEvent.getName(), changeToSaleFormat(sale.getDiscount())));
             }
         });
         return result;
@@ -121,7 +129,7 @@ public class OutputView {
         List<String> result = new ArrayList<>();
         giftEvents.forEach(giftEvent -> {
             for (Gift gift : giftEvent.getCompensation()) {
-                result.add(String.format("%s: -%s", giftEvent.getName(), changeToMoneyFormat(gift.getMenu().getPrice())));
+                result.add(String.format("%s: %s", giftEvent.getName(), changeToSaleFormat(gift.getMenu().getPrice())));
             }
         });
         return result;
@@ -129,7 +137,7 @@ public class OutputView {
 
     public void printTotalBenefitPrice(int totalBenefitPrice) {
         System.out.println("<총혜택 금액>");
-        System.out.println(String.format("-%s", changeToMoneyFormat(totalBenefitPrice)));
+        System.out.println(String.format("%s", changeToSaleFormat(totalBenefitPrice)));
         System.out.println();
     }
 
