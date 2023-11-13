@@ -27,12 +27,12 @@ public class WeekdayEvent extends Event<Sale> {
 
     @Override
     public boolean isAvailable(Order order) {
-        return isInEventPeriod(order.getReservationDate());
+        return order != null && isInEventPeriod(order.getReservationDate());
     }
 
     @Override
     public void apply(Order order) {
-        if (isAvailable(order)) {
+        if (order != null && isAvailable(order)) {
             order.getOrderMenus().stream()
                     .filter(orderMenu -> orderMenu.getMenu().getMenuType() == target)
                     .forEach(orderMenu -> this.compensation.add(new Sale(BASE_DISCOUNT_PER_TARGET * orderMenu.getCount())));
