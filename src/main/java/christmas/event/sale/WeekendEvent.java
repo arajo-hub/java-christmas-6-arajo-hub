@@ -19,7 +19,7 @@ public class WeekendEvent extends Event<Sale> {
     private static final int BASE_DISCOUNT_PER_TARGET = 2_023;
 
     public WeekendEvent() {
-        this.name = "평일 할인";
+        this.name = "주말 할인";
         this.compensation = new ArrayList<>();
         this.startDate = LocalDate.of(Year.now().getValue(), EventPlannerDetail.EVENT_MONTH, 1);
         this.endDate = LocalDate.of(Year.now().getValue(), EventPlannerDetail.EVENT_MONTH, 31);
