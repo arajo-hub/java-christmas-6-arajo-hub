@@ -40,7 +40,7 @@ public class OrderValidator {
     private static boolean isOnlyDrinkMenuType(List<OrderMenu> orderMenus) {
         return orderMenus.stream()
                 .filter(orderMenu -> MenuType.DRINK.equals(orderMenu.getMenuType()))
-                .count() == 1;
+                .count() == (orderMenus.size());
     }
 
 }
