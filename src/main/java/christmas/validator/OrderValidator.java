@@ -37,7 +37,7 @@ public class OrderValidator {
     }
 
     private static boolean isOnlyOneMenuType(List<OrderMenu> orderMenus) {
-        return orderMenus.stream()
+        return orderMenus.size() != 1 && orderMenus.stream()
                 .map(OrderMenu::getMenuType)
                 .distinct()
                 .count() == 1;
