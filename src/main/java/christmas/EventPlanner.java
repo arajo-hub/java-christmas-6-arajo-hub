@@ -36,53 +36,79 @@ public class EventPlanner {
     public void start(GiftPolicy giftPolicy, SalePolicy salePolicy, BadgePolicy badgePolicy) {
         outputView.greeting();
 
-        int date = getReservationDate();
-        LocalDate reservationDate = LocalDate.of(Year.now().getValue(), EventPlannerDetail.EVENT_MONTH, date);
-
+        LocalDate reservationDate = getReservationDate();
         List<OrderMenu> orderMenus = getOrderMenus();
 
         outputView.printEventHeader(reservationDate);
-
         outputView.printOrderMenus(orderMenus);
 
+        calculateBenefit(giftPolicy, salePolicy, badgePolicy, reservationDate, orderMenus);
+    }
+
+    private void calculateBenefit(GiftPolicy giftPolicy, SalePolicy salePolicy, BadgePolicy badgePolicy, LocalDate reservationDate, List<OrderMenu> orderMenus) {
         Order order = new Order(reservationDate, orderMenus);
 
-        outputView.printPaymentAmountBeforeSale(order);
-
-        List<Event<Gift>> giftEvents = giftPolicy.applyAndGetAppliedGiftPolicies(order);
-
-        outputView.printGifts(giftEvents);
-
-        List<Event<Sale>> saleEvents = salePolicy.applyAndGetAppliedSalePolicies(order);
-
-        outputView.printSalesAndGifts(saleEvents, giftEvents);
+        List<Event<Gift>> giftEvents = applyGiftPolicies(giftPolicy, order);
+        List<Event<Sale>> saleEvents = applySalePolicies(salePolicy, order);
 
         Benefit benefit = new Benefit(saleEvents, giftEvents);
-
-        outputView.printTotalBenefitPrice(benefit.getTotalBenefit());
-
         order.setBenefit(benefit);
 
-        outputView.printEstimatedPaymentAmountAfterSale(order.getPaymentAmountAfterSale());
-
-        List<Event<Badge>> badgeEvents = badgePolicy.applyAndGetAppliedGiftPolicies(order);
-
+        List<Event<Badge>> badgeEvents = applyBadgePolicies(badgePolicy, order);
         benefit.setBadges(badgeEvents);
 
-        outputView.printBadges(badgeEvents);
+        printBenefit(order, giftEvents, saleEvents, badgeEvents);
+    }
 
+    private void printBenefit(Order order, List<Event<Gift>> giftEvents, List<Event<Sale>> saleEvents, List<Event<Badge>> badgeEvents) {
+        outputView.printPaymentAmountBeforeSale(order);
+        outputView.printGifts(giftEvents);
+        outputView.printSalesAndGifts(saleEvents, giftEvents);
+        int totalBenefit = order.getPaymentAmountBeforeSale();
+        if (order.getBenefit() != null) {
+            totalBenefit = order.getBenefit().getTotalBenefit();
+        }
+        outputView.printTotalBenefitPrice(totalBenefit);
+        outputView.printEstimatedPaymentAmountAfterSale(order.getPaymentAmountAfterSale());
+        outputView.printBadges(badgeEvents);
+    }
+
+    private static List<Event<Badge>> applyBadgePolicies(BadgePolicy badgePolicy, Order order) {
+        List<Event<Badge>> badgeEvents = new ArrayList<>();
+        if (badgePolicy != null) {
+            badgeEvents = badgePolicy.applyAndGetAppliedGiftPolicies(order);
+        }
+        return badgeEvents;
+    }
+
+    private static List<Event<Sale>> applySalePolicies(SalePolicy salePolicy, Order order) {
+        List<Event<Sale>> saleEvents = new ArrayList<>();
+
+        if (salePolicy != null) {
+            saleEvents = salePolicy.applyAndGetAppliedSalePolicies(order);
+        }
+        return saleEvents;
+    }
+
+    private static List<Event<Gift>> applyGiftPolicies(GiftPolicy giftPolicy, Order order) {
+        List<Event<Gift>> giftEvents = new ArrayList<>();
+
+        if (giftPolicy != null) {
+            giftEvents = giftPolicy.applyAndGetAppliedGiftPolicies(order);
+        }
+        return giftEvents;
     }
 
     /**
      * 예상 방문 일자를 입력받는다.
      * @return 방문 일자
      */
-    private int getReservationDate() {
+    private LocalDate getReservationDate() {
         while (true) {
             try {
                 int reservationDate = inputView.readDate();
                 if (ReservationDateValidator.isValid(reservationDate)) {
-                    return reservationDate;
+                    return LocalDate.of(Year.now().getValue(), EventPlannerDetail.EVENT_MONTH, reservationDate);
                 }
                 throw new IllegalArgumentException(ReservationDateErrorMessage.INVALID_RESERVATION_DATE);
             } catch (IllegalArgumentException e) {

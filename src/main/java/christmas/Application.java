@@ -16,8 +16,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // 증정품 정책 설정
-        List<Event<Gift>> giftEvents = List.of(new ChampagneEvent());
-        GiftPolicy giftPolicy = new GiftPolicy(giftEvents);
+        GiftPolicy giftPolicy = new GiftPolicy(List.of(new ChampagneEvent()));
 
         // 할인 정책 설정
         List<Event<Sale>> saleEvents = List.of(new ChristmasDDayEvent(),
@@ -27,8 +26,7 @@ public class Application {
         SalePolicy salePolicy = new SalePolicy(saleEvents);
 
         // 배지 정책 설정
-        List<Event<Badge>> badgeEvents = List.of(new BadgeEvent());
-        BadgePolicy badgePolicy = new BadgePolicy(badgeEvents);
+        BadgePolicy badgePolicy = new BadgePolicy(List.of(new BadgeEvent()));
 
         EventPlanner eventPlanner = new EventPlanner(new InputView(), new OutputView());
         eventPlanner.start(giftPolicy, salePolicy, badgePolicy);
