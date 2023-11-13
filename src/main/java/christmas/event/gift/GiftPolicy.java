@@ -13,14 +13,6 @@ public class GiftPolicy {
 
     private List<Event<Gift>> giftPolicies;
 
-    /**
-     * 증정 정책 기본 설정
-     */
-    public GiftPolicy() {
-        this.giftPolicies = new ArrayList<>();
-        giftPolicies.add(new ChampagneEvent());
-    }
-
     public GiftPolicy(List<Event<Gift>> giftPolicies) {
         this.giftPolicies = giftPolicies;
     }

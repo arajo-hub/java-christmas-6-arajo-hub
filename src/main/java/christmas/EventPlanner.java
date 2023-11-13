@@ -28,26 +28,12 @@ public class EventPlanner {
 
     private OutputView outputView;
 
-    private GiftPolicy giftPolicy;
-
-    private SalePolicy salePolicy;
-
-    private BadgePolicy badgePolicy;
-
-    /**
-     * 증정 정책, 할인 정책 기본으로 설정하고 생성
-     * @param inputView 입력뷰
-     * @param outputView 출력뷰
-     */
     public EventPlanner(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.giftPolicy = new GiftPolicy();
-        this.salePolicy = new SalePolicy();
-        this.badgePolicy = new BadgePolicy();
     }
 
-    public void start() {
+    public void start(GiftPolicy giftPolicy, SalePolicy salePolicy, BadgePolicy badgePolicy) {
         outputView.greeting();
 
         int date = getReservationDate();

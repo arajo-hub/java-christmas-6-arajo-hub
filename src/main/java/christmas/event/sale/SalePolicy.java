@@ -13,16 +13,6 @@ public class SalePolicy {
 
     private List<Event<Sale>> salePolicies;
 
-    /**
-     * 할인 정책 기본 설정
-     */
-    public SalePolicy() {
-        this.salePolicies = List.of(new ChristmasDDayEvent(),
-                new WeekdayEvent(),
-                new WeekendEvent(),
-                new SpecialDayEvent());
-    }
-
     public SalePolicy(List<Event<Sale>> salePolicies) {
         this.salePolicies = salePolicies;
     }

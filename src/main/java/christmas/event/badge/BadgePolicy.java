@@ -13,13 +13,6 @@ public class BadgePolicy {
 
     private List<Event<Badge>> badgePolicies;
 
-    /**
-     * 배지 정책 기본 설정
-     */
-    public BadgePolicy() {
-        this.badgePolicies = List.of(new BadgeEvent());
-    }
-
     public BadgePolicy(List<Event<Badge>> badgePolicies) {
         this.badgePolicies = badgePolicies;
     }
