@@ -35,7 +35,7 @@ public class WeekendEvent extends Event<Sale> {
 
     private boolean isWeekend(LocalDate date) {
         return DayOfWeek.FRIDAY.equals(date.getDayOfWeek())
-                || DayOfWeek.FRIDAY.equals(date.getDayOfWeek());
+                || DayOfWeek.SATURDAY.equals(date.getDayOfWeek());
     }
 
     @Override

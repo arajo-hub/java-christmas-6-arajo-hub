@@ -1,5 +1,6 @@
 package christmas.event.gift;
 
+import christmas.event.badge.Policy;
 import christmas.order.Order;
 import christmas.event.Event;
 
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * 증정 정책
  */
-public class GiftPolicy {
+public class GiftPolicy implements Policy<Gift> {
 
     private List<Event<Gift>> giftPolicies;
 
@@ -22,7 +23,8 @@ public class GiftPolicy {
      * @param order 주문
      * @return 적용 가능한 증정 정책 목록
      */
-    public List<Event> getAvailableGiftPolicies(Order order) {
+    @Override
+    public List<Event> getAvailablePolicies(Order order) {
         List<Event> events = new ArrayList<>();
         for (Event giftPolicy : giftPolicies) {
             if (giftPolicy.isAvailable(order)) {
@@ -37,7 +39,8 @@ public class GiftPolicy {
      * @param order 주문
      * @return 적용한 증정 정책 목록
      */
-    public List<Event<Gift>> applyAndGetAppliedGiftPolicies(Order order) {
+    @Override
+    public List<Event<Gift>> applyAndGetAppliedPolicies(Order order) {
         List<Event<Gift>> events = new ArrayList<>();
         for (Event<Gift> giftPolicy : giftPolicies) {
             if (giftPolicy.isAvailable(order)) {

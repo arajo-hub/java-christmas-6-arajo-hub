@@ -3,6 +3,7 @@ package christmas.eventplanner;
 import christmas.event.*;
 import christmas.event.badge.Badge;
 import christmas.event.badge.BadgePolicy;
+import christmas.event.badge.Policy;
 import christmas.event.gift.Gift;
 import christmas.event.gift.GiftPolicy;
 import christmas.event.sale.Sale;
@@ -51,13 +52,13 @@ public class EventPlanner {
     private void calculateBenefit(GiftPolicy giftPolicy, SalePolicy salePolicy, BadgePolicy badgePolicy, LocalDate reservationDate, List<OrderMenu> orderMenus) {
         Order order = new Order(reservationDate, orderMenus);
 
-        List<Event<Gift>> giftEvents = applyGiftPolicies(giftPolicy, order);
-        List<Event<Sale>> saleEvents = applySalePolicies(salePolicy, order);
+        List<Event<Gift>> giftEvents = applyPolicies(giftPolicy, order);
+        List<Event<Sale>> saleEvents = applyPolicies(salePolicy, order);
 
         Benefit benefit = new Benefit(saleEvents, giftEvents);
         order.setBenefit(benefit);
 
-        List<Event<Badge>> badgeEvents = applyBadgePolicies(badgePolicy, order);
+        List<Event<Badge>> badgeEvents = applyPolicies(badgePolicy, order);
         benefit.setBadges(badgeEvents);
 
         printBenefit(order, giftEvents, saleEvents, badgeEvents);
@@ -76,30 +77,12 @@ public class EventPlanner {
         outputView.printBadges(badgeEvents);
     }
 
-    private static List<Event<Badge>> applyBadgePolicies(BadgePolicy badgePolicy, Order order) {
-        List<Event<Badge>> badgeEvents = new ArrayList<>();
-        if (badgePolicy != null) {
-            badgeEvents = badgePolicy.applyAndGetAppliedGiftPolicies(order);
+    private static <T> List<Event<T>> applyPolicies(Policy<T> policy, Order order) {
+        List<Event<T>> events = new ArrayList<>();
+        if (policy != null) {
+            events = policy.applyAndGetAppliedPolicies(order);
         }
-        return badgeEvents;
-    }
-
-    private static List<Event<Sale>> applySalePolicies(SalePolicy salePolicy, Order order) {
-        List<Event<Sale>> saleEvents = new ArrayList<>();
-
-        if (salePolicy != null) {
-            saleEvents = salePolicy.applyAndGetAppliedSalePolicies(order);
-        }
-        return saleEvents;
-    }
-
-    private static List<Event<Gift>> applyGiftPolicies(GiftPolicy giftPolicy, Order order) {
-        List<Event<Gift>> giftEvents = new ArrayList<>();
-
-        if (giftPolicy != null) {
-            giftEvents = giftPolicy.applyAndGetAppliedGiftPolicies(order);
-        }
-        return giftEvents;
+        return events;
     }
 
     /**
