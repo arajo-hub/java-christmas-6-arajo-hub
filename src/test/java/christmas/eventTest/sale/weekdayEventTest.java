@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class weekdayEventTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 4, 5, 11, 12, 18, 19}) // 1, 2는 주말
+    @ValueSource(ints = {4, 5, 11, 12, 13, 28})
     void 할인_적용_성공(int date) {
         List<OrderMenu> orderMenus = List.of(new OrderMenu(Menu.ICE_CREAM.getName() + EventPlannerDetail.MENU_COUNT_SEPARATOR + 1));
         Order order = new Order(LocalDate.of(Year.now().getValue(), Month.DECEMBER.getValue(), date), orderMenus);

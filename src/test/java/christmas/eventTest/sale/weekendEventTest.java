@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class weekendEventTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 4, 5, 11, 12, 18, 19}) // 1, 2는 주말
+    @ValueSource(ints = {1, 2, 8, 9, 15, 16, 22, 23, 29, 30})
     void 할인_적용_성공(int date) {
         List<OrderMenu> orderMenus = List.of(new OrderMenu(Menu.BARBECUE_LIP.getName() + EventPlannerDetail.MENU_COUNT_SEPARATOR + 1));
         Order order = new Order(LocalDate.of(Year.now().getValue(), Month.DECEMBER.getValue(), date), orderMenus);
