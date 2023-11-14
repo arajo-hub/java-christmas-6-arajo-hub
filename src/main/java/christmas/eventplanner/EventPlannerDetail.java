@@ -15,4 +15,6 @@ public class EventPlannerDetail {
 
     public static final int ORDER_MENU_TOTAL_MAX_COUNT = 20;
 
+    public static final int EVENT_APPLY_TOTAL_PAYMENT_AMOUNT = 10_000;
+
 }

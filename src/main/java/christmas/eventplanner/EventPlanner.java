@@ -52,14 +52,19 @@ public class EventPlanner {
     private void calculateBenefit(GiftPolicy giftPolicy, SalePolicy salePolicy, BadgePolicy badgePolicy, LocalDate reservationDate, List<OrderMenu> orderMenus) {
         Order order = new Order(reservationDate, orderMenus);
 
-        List<Event<Gift>> giftEvents = applyPolicies(giftPolicy, order);
-        List<Event<Sale>> saleEvents = applyPolicies(salePolicy, order);
+        List<Event<Gift>> giftEvents = new ArrayList<>();
+        List<Event<Sale>> saleEvents = new ArrayList<>();
+        List<Event<Badge>> badgeEvents = new ArrayList<>();
+        if (order.getPaymentAmountBeforeSale() > EventPlannerDetail.EVENT_APPLY_TOTAL_PAYMENT_AMOUNT) {
+            giftEvents = applyPolicies(giftPolicy, order);
+            saleEvents = applyPolicies(salePolicy, order);
 
-        Benefit benefit = new Benefit(saleEvents, giftEvents);
-        order.setBenefit(benefit);
+            Benefit benefit = new Benefit(saleEvents, giftEvents);
+            order.setBenefit(benefit);
 
-        List<Event<Badge>> badgeEvents = applyPolicies(badgePolicy, order);
-        benefit.setBadges(badgeEvents);
+            badgeEvents = applyPolicies(badgePolicy, order);
+            benefit.setBadges(badgeEvents);
+        }
 
         printBenefit(order, giftEvents, saleEvents, badgeEvents);
     }
@@ -68,7 +73,7 @@ public class EventPlanner {
         outputView.printPaymentAmountBeforeSale(order);
         outputView.printGifts(giftEvents);
         outputView.printSalesAndGifts(saleEvents, giftEvents);
-        int totalBenefit = order.getPaymentAmountBeforeSale();
+        int totalBenefit = 0;
         if (order.getBenefit() != null) {
             totalBenefit = order.getBenefit().getTotalBenefit();
         }
