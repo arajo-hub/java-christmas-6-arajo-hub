@@ -3,7 +3,7 @@ package christmas.eventplanner;
 import christmas.event.*;
 import christmas.event.badge.Badge;
 import christmas.event.badge.BadgePolicy;
-import christmas.event.badge.Policy;
+import christmas.event.Policy;
 import christmas.event.gift.Gift;
 import christmas.event.gift.GiftPolicy;
 import christmas.event.sale.Sale;

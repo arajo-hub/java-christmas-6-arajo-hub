@@ -1,6 +1,6 @@
 package christmas.event.sale;
 
-import christmas.event.badge.Policy;
+import christmas.event.Policy;
 import christmas.order.Order;
 import christmas.event.Event;
 

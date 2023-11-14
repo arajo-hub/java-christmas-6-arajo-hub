@@ -1,4 +1,4 @@
-package christmas.event.badge;
+package christmas.event;
 
 import christmas.event.Event;
 import christmas.order.Order;
